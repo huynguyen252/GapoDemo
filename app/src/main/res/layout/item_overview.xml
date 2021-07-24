@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.ribisoft.gapodemo.data.model.Item" />
+
+        <variable
+            name="event"
+            type="com.ribisoft.gapodemo.ui.newsfeed.fragment.topic.adapter.TopicAdapter.OnClickItemCallback" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="@{(view) -> event.onClickItem(item)}"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp15">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_avatar"
+            setAvatar="@{item.avatar}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:adjustViewBounds="true"
+            bind:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp15"
+            android:fontFamily="sans-serif-medium"
+            android:text="@{item.title}"
+            android:textColor="@color/color_title"
+            android:textSize="@dimen/sp18"
+            bind:layout_constraintTop_toBottomOf="@id/iv_avatar" />
+
+        <include
+            android:id="@+id/layout_publisher"
+            layout="@layout/item_publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            bind:item="@{item}"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/tv_title"
+            android:layout_marginStart="@dimen/dp15" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp15"
+            android:layout_marginBottom="@dimen/dp15"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:lineSpacingExtra="@dimen/dp2"
+            android:text="@{item.description}"
+            android:textColor="@color/gray"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textSize="@dimen/sp12"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/layout_publisher" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

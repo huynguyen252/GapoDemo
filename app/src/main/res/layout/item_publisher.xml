@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.ribisoft.gapodemo.data.model.Item" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            setIcon="@{item.publisher.icon}"
+            android:layout_width="@dimen/dp10"
+            android:layout_height="@dimen/dp10"
+            android:tint="@color/gray" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp5"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@{item.publisher.name}"
+            android:textSize="@dimen/sp12" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/dp5"
+            android:layout_height="@dimen/dp5"
+            android:layout_marginStart="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp5"
+            android:src="@drawable/ic_dot"
+            android:tint="@color/gray" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_time"
+            setDate="@{item.publishedDate}"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/sp12"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp5" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

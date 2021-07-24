@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ln_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_topic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                app:tabGravity="center"
+                app:tabTextAppearance="@style/TabLayoutTextStyle"
+                app:tabIndicatorColor="@color/white"
+                app:tabTextColor="@color/white"
+                app:tabMode="scrollable"
+                app:tabIndicatorHeight="@dimen/dp5"
+                android:background="@color/color_app"
+                app:tabSelectedTextColor="@color/white"
+                app:tabIndicatorAnimationMode="elastic"
+                android:layout_height="wrap_content" />
+
+        </androidx.viewpager.widget.ViewPager>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

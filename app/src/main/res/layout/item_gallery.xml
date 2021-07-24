@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.ribisoft.gapodemo.data.model.Item" />
+
+        <variable
+            name="event"
+            type="com.ribisoft.gapodemo.ui.newsfeed.fragment.topic.adapter.TopicAdapter.OnClickItemCallback" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="@{(view) -> event.onClickItem(item)}"
+        android:orientation="vertical"
+        android:padding="@dimen/dp15">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="3"
+            android:text="@{item.title}"
+            android:textColor="@color/color_title"
+            android:textSize="@dimen/sp16"
+            bind:layout_constraintTop_toTopOf="parent" />
+
+        <HorizontalScrollView
+            android:id="@+id/hsv_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:scrollbars="none"
+            bind:layout_constraintTop_toBottomOf="@id/tv_title">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ln_images"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <include
+            android:id="@+id/layout_publisher"
+            layout="@layout/item_publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            bind:item="@{item}"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/hsv_images" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

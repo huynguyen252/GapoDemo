@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="section"
+            type="com.ribisoft.gapodemo.data.model.Section" />
+
+        <variable
+            name="holder"
+            type="com.ribisoft.gapodemo.ui.details.adapter.holder.Section2Holder" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_preview_image"
+            setIcon="@{section.contents.previewImage.href}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:adjustViewBounds="true"
+            bind:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_play"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:adjustViewBounds="true"
+            android:onClick="@{(view)-> holder.playVideo()}"
+            app:srcCompat="@drawable/ic_play"
+            bind:layout_constraintBottom_toBottomOf="@id/iv_preview_image"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintRight_toRightOf="parent"
+            bind:layout_constraintTop_toTopOf="@id/iv_preview_image" />
+
+        <FrameLayout
+            android:id="@+id/fl_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{(view)-> holder.showPause()}"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintRight_toRightOf="parent"
+            android:visibility="gone"
+            bind:layout_constraintTop_toTopOf="parent">
+
+            <VideoView
+                android:id="@+id/video_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="visible" />
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_pause"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:adjustViewBounds="true"
+            android:onClick="@{(view)-> holder.pauseVideo()}"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/ic_pause"
+            bind:layout_constraintBottom_toBottomOf="@id/fl_video"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintRight_toRightOf="parent"
+            bind:layout_constraintTop_toTopOf="@id/fl_video" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginRight="@dimen/dp15"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:gravity="center_horizontal"
+            android:text="@{section.contents.caption}"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/sp12"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@id/iv_preview_image" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
